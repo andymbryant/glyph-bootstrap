@@ -1,0 +1,110 @@
+:root {
+	--title-bg: rgb(196, 196, 196);
+	--subtitle-bg: rgb(230, 230, 230);
+	--control-padding: .5rem;
+	--control-components-padding: 1rem;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5 {
+	margin: 0;
+	padding: 0;
+}
+
+.card-header {
+	padding: 0;
+}
+
+/* #state-view {
+	height: 100%;
+} */
+
+.control {
+	min-width: 250px !important;
+	border-right: 1px grey solid;
+}
+
+.display {
+	min-width: 500px !important;
+	border-left: .5px grey solid;
+}
+
+.control, .display {
+	z-index: 9999;
+}
+
+.control, .view, .display {
+	height: 100%;
+}
+
+.graph-title {
+	background-color: var(--title-bg);
+	padding: var(--control-padding);
+	text-align: center;
+}
+
+.graph-subtitle {
+	background-color: var(--subtitle-bg);
+	padding: .5rem;
+	text-align: center;
+	border-top: .5px grey solid;
+	border-bottom: .5px grey solid;
+}
+
+.control-components-wrapper {
+	padding: var(--control-components-padding);
+}
+
+.control-components-wrapper div {
+	margin-bottom: 1rem;
+}
+
+.control-components-wrapper p {
+	font-weight: bold;
+}
+
+#statenode-stats {
+	word-wrap: break-word;
+	max-width: 400px;
+}
+
+#userID, #playtrace-index {
+	margin-bottom: .5rem;
+}
+
+#userID, #highlightUserID, #playtrace-index, #highlightNodeID {
+	width: 100%;
+}
+
+#actionseq-info {
+	color: purple;
+}
+
+#infobox {
+	color: red;
+}
+
+.svg-container {
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	padding-bottom: 0;
+	/* aspect ratio */
+	vertical-align: top;
+	overflow: hidden;
+}
+
+.svg-content-responsive {
+	display: inline-block;
+	position: absolute;
+	top: 10px;
+	left: 0;
+}
