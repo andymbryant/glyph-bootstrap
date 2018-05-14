@@ -2,98 +2,262 @@
 <html lang="en" dir="ltr">
 
 <head>
-    <meta charset="utf-8">
-    <title>Glyph Bootstrap</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" href="main.css">
+	<meta charset="utf-8">
+	<title>Glyph Bootstrap</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/glyphstyle_ssiege.css" />
+	<link rel="stylesheet" href="./css/main.css">
 
 
 </head>
 
 <body>
+	<nav class="nav">
+		<a href="" class="nav-link title">Glyph</a>
+		<span href="" class="nav-link" id="level">Select Data: </span>
+	</nav>
 
-    <main>
-        <nav class="nav">
-            <a href="" class="nav-link">Glyph</a>
-            <a href="" class="nav-link">Data</a>
-        </nav>
-        <div id="accordion">
-            <div class="card">
-                <div class="card-header" id="state-view-heading">
-                    <h5 class="mb-0">
+	<div class="accordionWrapper">
+		<div class="accordion" id="accordion">
+			<div class="accordion-group">
+				<div class="card-header text-center" id="state-view-heading">
+					<h5 class="mb-0">
                         <button class="btn btn-link" data-toggle="collapse" data-target="#state-view" aria-expanded="true" aria-controls="collapseOne">
                             State Graph
                         </button>
                     </h5>
-                </div>
+				</div>
 
-                <div id="state-view" class="collapse show" aria-labelledby="state-view-heading" data-parent="#accordion">
-                    <div class="container-fluid">
-                        <div class="row">
+				<div id="state-view" class="collapse show" aria-labelledby="state-view-heading" data-parent="#accordion">
+					<div class="container-fluid">
+						<div class="row">
 
-                            <div class="p-0 col-lg-2">
-                                <div class="control">
-                                    <h1>Controls</h1>
-                                    <h5>Highlight Users</h5>
-                                    <label for="enter-player">Player(s):</label>
-                                    <input id="enter-player" type="text" placeholder="Enter Player ID(s)">
-                                    <label for="select-group">Group:</label>
-                                    <select id="select-group" type="select" placeholder="Select Group">
-                                    </select>
-                                    <h5>Highlight Users</h5>
-                                    <label for="most-frequent">Most Frequent Sequences</label>
-                                    <select id="most-frequent">
-                                    </select>
+							<div class="p-0 col-lg-2">
+								<div class="control">
+									<div class='graph-title'>
+										<h3>Graph Controls</h3>
+									</div>
+									<div class="graph-subtitle">
+										<h5>Highlight Players</h5>
+									</div>
 
-                                    <label for="most-frequent-th">th Most Frequent Sequences</label>
+									<div class="control-components-wrapper">
+										<div>
+											<input id="userID" type="text" placeholder="Enter Player ID(s)">
+											<input type="button" id="highlightUserID" value="Highlight" onclick="highlightUserID()" />
+										</div>
+										<div>
+											<label for="select-group">Select Group:</label>
+											<select id="select-group" type="select" placeholder="Select Group" onchange="highlightGroup(this.value)">
+												<option value="">All Groups</option>
+		                                    </select>
+										</div>
+										<input type="button" id="clearHighlight" value="Clear Highlights" onclick="clearHighlight()" />
+									</div>
 
-                                    <select id="most-frequent-th">
-                                    </select>
-                                </div>
-                            </div>
+									<div class="graph-subtitle">
+										<h5>Highlight Frequencies</h5>
+									</div>
 
-                            <div class="p-0 col-lg-7">
-                                <div class="view">
+									<div class="control-components-wrapper">
+										<div>
+											<label for="most-frequent">Most Frequent Sequences</label>
+											<select id="most-frequent">
+	                                    		</select>
+										</div>
+										<div>
+											<label for="most-frequent-th">th Most Frequent Sequences</label>
 
-                                </div>
-                            </div>
+											<select id="most-frequent-th">
+	                                   			</select>
+										</div>
+									</div>
 
-                            <div class="p-0 col-lg-3">
-                                <div class="display">
+									<div class="graph-subtitle">
+										<h5>Map Controls</h5>
+									</div>
+									<div class="control-components-wrapper">
+										<div>
+											<label>Change Graph Size</label>
+											<input type="button" value="--" onclick="decrementGraph(0)" />
+											<input type="button" value="++" onclick="incrementGraph(0)" />
 
-                                </div>
-                            </div>
+											<label>Change Graph Opacity</label>
+											<input type="button" id="decrementOpacity" value="--" onclick="decrementOpacity()" />
+											<input type="button" id="incrementOpacity" value="++" onclick="incrementOpacity()" />
+											<label>Freeze graph layout</label>
+											<input type="button" id="freezeLayout" value="Freeze/Unfreeze" onclick="freezeLayout()" />
+											<label>Fix all nodes' positions</label>
+											<input type="button" id="fixLayout" value="Fix/Unfix" onclick="fixLayout()" />
+										</div>
+										<!-- <div>
+											<label>Change Graph Zoom</label>
+											<input type="button" value="--" onclick="" />
+											<input type="button" value="++" onclick="" />
+										</div> -->
+									</div>
+								</div>
+							</div>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
+							<div class="p-0 col-lg-6">
+								<div class="state-graph-div">
+									<div id="state-graph-svg"></div>
+								</div>
+							</div>
 
-            <div class="card">
-                <div class="card-header" id="sequence-view-heading">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#sequence-view" aria-expanded="false" aria-controls="collapseTwo">
-                            Sequence Graph
-                        </button>
-                    </h5>
-                </div>
+							<div class="p-0 col-lg-4">
+								<div class="display">
+									<div class='graph-title'>
+										<h3>Graph Information</h3>
+									</div>
+									<div class="graph-subtitle">
+										<h5>Numbers</h5>
+									</div>
 
-                <div id="sequence-view" class="collapse" aria-labelledby="sequence-view-heading" data-parent="#accordion">
-                    <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-                        on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                        farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                    </div>
-                </div>
-            </div>
+									<div class="control-components-wrapper">
+										<div>
+											Number of Nodes: <strong><label id="num-statenodes"></label></strong> Number of Players: <strong><label id="num-players"></label></strong>
+										</div>
+									</div>
 
-        </div>
-    </main>
+									<div class="graph-subtitle">
+										<h5>Node Information</h5>
+									</div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <script src="main.js"></script>
+									<div class="control-components-wrapper">
+										<div>State of the Node: <label id="statenode-info"></label></div>
+										<div>Statistics: <label id="statenode-stats"></label></div>
+										<div>Player IDs visiting this node: <label id="num-players-state"></label></div>
+										<div>Players: <label id="players-state"></label></div>
+									</div>
+
+									<div class="graph-subtitle">
+										<h5>Link Information</h5>
+									</div>
+									<div class="control-components-wrapper">
+										<div>Action Link Info: <span style="color:purple"><label id="statelink-info"></label></div>
+										<div>Player IDs Traversing this Link: <label id="num-players-statelink"></label></div>
+										<div>Players: <label id="players-statelink"></label></div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-header text-center" id="sequence-view-heading">
+					<h5 class="mb-0">
+						<button class="btn btn-link" data-toggle="collapse" data-target="#sequence-view" aria-expanded="true" aria-controls="collapseOne">
+							Sequence Graph
+						</button>
+					</h5>
+				</div>
+
+				<div id="sequence-view" class="collapse show" aria-labelledby="state-view-heading" data-parent="#accordion">
+					<div class="container-fluid">
+						<div class="row">
+
+							<div class="p-0 col-lg-2">
+								<div class="control">
+									<div class='graph-title'>
+										<h3>Graph Controls</h3>
+									</div>
+									<div class="graph-subtitle">
+										<h5>Highlight Sequences</h5>
+									</div>
+
+									<div class="control-components-wrapper">
+										<div>
+											<label>Enter Sequence Index to Highlight:</label>
+							                <input type="text" placeholder="Highlight Sequence" id="playtrace-index">
+							                <input type="button" id="highlightNodeID" value="Highlight" onclick="highlightNodeID()" />
+											<input type="button" id="highlightNodeID_first" value="first" onclick="highlightNodeID_index(0)" />
+											<input type="button" id="highlightNodeID_last" value="last" onclick="highlightNodeID_index(-1)" />
+											<input type="button" id="highlightNodeID_reverse" value="reverse" onclick="highlightNodeID(true)" />
+											<label>Enter Sequence Index to Show Info:</label>
+											<input placeholder="Sequence Info" type="text" id="playtrace-show-info">
+											<input type="button" value="Show" onclick="showInfoNodeID()" />
+											<input type="button" value="Clear Highlights" onclick="clearHighlight()" />
+										</div>
+									</div>
+
+									<div class="graph-subtitle">
+										<h5>Map Controls</h5>
+									</div>
+									<div class="control-components-wrapper">
+										<div>
+											<label>Change Graph Size</label>
+											<input type="button" value="--" onclick="decrementGraph(1)" />
+											<input type="button" value="++" onclick="incrementGraph(1)" />
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="p-0 col-lg-6">
+								<div class="state-graph-div">
+									<div id="behavior-graph-svg"></div>
+								</div>
+							</div>
+
+							<div class="p-0 col-lg-4">
+								<div class="display">
+									<div class='graph-title'>
+										<h3>Graph Information</h3>
+									</div>
+									<div class="graph-subtitle">
+										<h5>Numbers</h5>
+									</div>
+
+									<div class="control-components-wrapper">
+										<div>
+											Number of Nodes: <strong><label id="num-nodes"></label></strong> Number of Players: <strong><label id="num-players"></label></strong>
+										</div>
+									</div>
+
+									<div class="graph-subtitle">
+										<h5>Node Information</h5>
+									</div>
+
+									<div class="control-components-wrapper">
+										<div><p>State of the Node: </p><label id="statenode-info"></label></div>
+										<div>Statistics: <label id="statenode-stats"></label></div>
+										<div>Player IDs visiting this node: <label id="num-players-state"></label></div>
+										<div>Players: <label id="players-state"></label></div>
+									</div>
+
+									<div class="graph-subtitle">
+										<h5>Link Information</h5>
+									</div>
+									<div class="control-components-wrapper">
+										<div>Sequence Node Info: <label id="selected-node-index"></label></div>
+										<div>Player IDs having this pattern: <label id="num-players-sequence"></label></div>
+										<div>Players: <label id="players-sequence"></label></div>
+										<div>Action sequence: <label id="actionseq-info"></label></div>
+										<div>Complete sequence: <label id="num-states-in-trajectory"></label></div>
+										<div>States: <span style="color:red"><label id="infobox"></label></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+		<script src="libs/d3.min.js"></script>
+		<script src="libs/underscore-min.js"></script>
+		<script src="./js/main.js"></script>
+		<script src="./js/accordion.js"></script>
 </body>
 
 </html>
