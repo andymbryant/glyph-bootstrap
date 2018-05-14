@@ -1,1 +1,1 @@
-[Link: ](https://andymbryant.github.io/glyph-bootstrap/)
+[Live Version](https://andymbryant.github.io/glyph-bootstrap/)
