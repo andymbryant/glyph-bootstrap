@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Glyph Bootstrap</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+
+
+</head>
+
+<body>
+
+    <main>
+        <nav class="nav">
+            <a href="" class="nav-link">Glyph</a>
+            <a href="" class="nav-link">Data</a>
+        </nav>
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="state-view-heading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#state-view" aria-expanded="true" aria-controls="collapseOne">
+                            State Graph
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="state-view" class="collapse show" aria-labelledby="state-view-heading" data-parent="#accordion">
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <div class="p-0 col-lg-2">
+                                <div class="control">
+                                    <h1>Controls</h1>
+                                    <h5>Highlight Users</h5>
+                                    <label for="enter-player">Player(s):</label>
+                                    <input id="enter-player" type="text" placeholder="Enter Player ID(s)">
+                                    <label for="select-group">Group:</label>
+                                    <select id="select-group" type="select" placeholder="Select Group">
+                                    </select>
+                                    <h5>Highlight Users</h5>
+                                    <label for="most-frequent">Most Frequent Sequences</label>
+                                    <select id="most-frequent">
+                                    </select>
+
+                                    <label for="most-frequent-th">th Most Frequent Sequences</label>
+
+                                    <select id="most-frequent-th">
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="p-0 col-lg-7">
+                                <div class="view">
+
+                                </div>
+                            </div>
+
+                            <div class="p-0 col-lg-3">
+                                <div class="display">
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="sequence-view-heading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#sequence-view" aria-expanded="false" aria-controls="collapseTwo">
+                            Sequence Graph
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="sequence-view" class="collapse" aria-labelledby="sequence-view-heading" data-parent="#accordion">
+                    <div class="card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                        on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
+                        farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
